@@ -1,0 +1,53 @@
+<h1>Cadastre-se</h1>
+<h4>
+	<%= @a %>
+</h4>
+<%= form_for @user, url: '/sign_up' do |f| %>
+
+ <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> foram encontrados:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div>
+		<%= f.label :name, 'Nome' %>
+		<%= f.text_field :name %>
+	</div>
+	<div>
+		<%= f.label :birth_date, 'Data de nascimento' %>
+		<%= f.date_select :birth_date, start_year: Date.today.year - 100 %>
+	</div>
+
+	<div>
+		<%= f.label :city_id, 'Cidade' %>
+		<%= f.collection_select :city_id, @cities, :id, :name %>
+	</div>
+
+	<div>
+		<%= f.label :phone, 'Telefone' %>
+		<%= f.text_field :phone %>
+	</div>
+	<div>
+		<%= f.label :username, 'Usuário' %>
+		<%= f.text_field :username %>
+	</div>
+	<div>
+		<%= f.label :password, 'Senha' %>
+		<%= f.password_field :password %>
+	</div>
+	<div>
+		<%= f.label :password_confirmation, 'Confirme sua Senha' %>
+		<%= f.password_field :password_confirmation %>
+	</div>
+	<div>
+		<%= f.submit %>
+	</div>
+
+<% end %>

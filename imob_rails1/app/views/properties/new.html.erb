@@ -1,0 +1,40 @@
+<h1>Cadastre seu Imóvel</h1>
+
+<%= form_for @property, url: '/properties/create' do |f| %>
+
+ <% if @property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@property.errors.count, "error") %> foram encontrados:</h2>
+
+      <ul>
+      <% @property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div>
+		<%= f.label :title, 'Título' %>
+		<%= f.text_field :title %>
+	</div>
+	<div>
+		<%= f.label :description, 'Descrição' %>
+		<%= f.text_area :description %>
+	</div>
+	<div>
+		<%= f.label :price, 'Preço' %>
+		<%= f.text_field :price %>
+	</div>
+		<%= f.label :image, 'Imagem' %>
+		<%= f.file_field :image %>
+	<div>
+		
+	</div>
+
+
+	<div>
+		<%= f.submit %>
+	</div>
+
+<% end %>

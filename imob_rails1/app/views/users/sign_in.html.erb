@@ -1,0 +1,21 @@
+<h1>Cadastre-se</h1>
+<h4>
+	<%= @a %>
+</h4>
+<%= form_for @user, url: sign_in_path do |f| %>
+
+  <<div class="alert">
+    <%= @message %>
+  </div>
+	<div>
+		<%= f.label :username, 'Usuário' %>
+		<%= f.text_field :username %>
+	</div>
+  <div>
+    <%= f.label :password, 'Senha' %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.submit 'Entrar' %>
+  </div>
+  <% end %>
